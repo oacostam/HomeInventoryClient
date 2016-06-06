@@ -28,6 +28,9 @@ Ext.application({
     models: [
         'Product'
     ],
+    stores: [
+        'Product'
+    ],
     icon: {
         '57': 'resources/icons/Icon.png',
         '72': 'resources/icons/Icon~ipad.png',
