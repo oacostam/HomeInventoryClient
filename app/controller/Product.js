@@ -2,6 +2,13 @@ Ext.define('HomeInventory.controller.Product', {
     extend: 'Ext.app.Controller',
     
     config: {
+        models: [
+            'Product'
+        ],
+        stores: [
+            'Product'
+        ],
+
         refs: {
             btnProductSubmit: 'productView button[action=productSubmit]',
 			btnProductCancel: 'productView button[action=productCancel]'
