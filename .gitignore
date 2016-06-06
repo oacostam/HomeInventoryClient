@@ -1,0 +1,7 @@
+# sencha archive and build
+archive/
+build/
+# SASS cache
+resources/sass/.sass-cache
+#Deleted files
+*.~
