@@ -1,8 +1,7 @@
 Ext.define('HomeInventory.view.Product', {
    extend: 'Ext.form.Panel',
     xtype: 'productView',
-    fullscreen: true,
-    store: '',
+	fullscreen: true,
     requires: [
         'Ext.form.FieldSet',
 		'Ext.field.Hidden',
