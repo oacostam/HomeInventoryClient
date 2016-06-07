@@ -5,7 +5,7 @@ Ext.define( 'HomeInventory.store.Product', {
  config: {
    autoLoad: true,
    model: 'HomeInventory.model.Product',
-   storeId: 'products',
+   storeId: 'Product',
    autoSync: true
  }
 });
