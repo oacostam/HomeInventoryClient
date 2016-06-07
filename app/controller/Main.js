@@ -12,10 +12,7 @@ Ext.define('HomeInventory.controller.Main', {
         }
     },
 
-    showProductView: function(){
-        var productWin = Ext.create('HomeInventory.view.Product');
-		Ext.Viewport.setActiveItem(productWin);
-	},
+    
     //called when the Application is launched, remove if not needed
     launch: function(app) {
         

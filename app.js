@@ -22,7 +22,6 @@ Ext.application({
         'Product'
     ],
     controllers: [
-        'Main',
         'Product'
     ],
     models: [
