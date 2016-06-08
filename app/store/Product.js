@@ -6,6 +6,10 @@ Ext.define( 'HomeInventory.store.Product', {
    autoLoad: true,
    model: 'HomeInventory.model.Product',
    storeId: 'Product',
-   autoSync: true
+   autoSync: true,
+   proxy :{
+            type: 'rest',
+            url: 'http://localhost:3000/products'
+        }
  }
 });
