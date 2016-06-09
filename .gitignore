@@ -4,4 +4,7 @@ build/
 # SASS cache
 resources/sass/.sass-cache
 #Deleted files
+*.*~
 *.~
+#Phonegap credentials
+local.properties
