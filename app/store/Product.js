@@ -3,13 +3,14 @@ Ext.define( 'HomeInventory.store.Product', {
  requires: ['HomeInventory.model.Product'],
     
  config: {
-   autoLoad: true,
+   autoLoad: false,
+   remoteFilter: true,
    model: 'HomeInventory.model.Product',
    storeId: 'Product',
-   autoSync: true,
+   autoSync: false,
    proxy :{
-            type: 'rest',
-            url: 'http://localhost:3000/products'
-        }
+     type: 'rest',
+     url: 'http://localhost:3000/products'
+   }
  }
-});
+}); 

@@ -27,22 +27,12 @@ Ext.define('HomeInventory.controller.Product', {
         }
     },
     showProductView: function(){
-        var code = '12345';
-        Ext.ModelManager.getModel('HomeInventory.model.Product').load(code, {
-            success: function (p) {
-                console.log(p);
-            },
-            failure: function () {
-               console.log('failure');
-            }
-        });
-
-
         var productStore = Ext.getStore('Product');
-        
-        var product = productStore.find('barcode', code);
+        var product = productStore.filter([{property:'barcode', value: '12345'}]);
+        productStore.load();
         var productWin = Ext.create('HomeInventory.view.Product');
         productWin.setData(product);
+        Ext.Viewport.add(productWin);
 		Ext.Viewport.setActiveItem(productWin);
 	},
     returnToMain: function(){
