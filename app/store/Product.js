@@ -7,10 +7,6 @@ Ext.define( 'HomeInventory.store.Product', {
    remoteFilter: true,
    model: 'HomeInventory.model.Product',
    storeId: 'Product',
-   autoSync: false,
-   proxy :{
-     type: 'rest',
-     url: 'http://localhost:3000/products'
-   }
+   autoSync: false
  }
 }); 

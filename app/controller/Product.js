@@ -5,13 +5,18 @@ Ext.define('HomeInventory.controller.Product', {
         models: [
             'Product'
         ],
-        stores: [
+        views: [
             'Product'
         ],
 
         refs: {
+            productView: {
+               selector: 'productView',
+               xtype: 'productView',
+               autoCreate: true
+            },
             btnProductSubmit: 'productView button[action=productSubmit]',
-			btnProductCancel: 'productView button[action=productCancel]',
+	        btnProductCancel: 'productView button[action=productCancel]',
             btnScan: 'main button[action=scan]'
         },
         control: {
@@ -27,21 +32,22 @@ Ext.define('HomeInventory.controller.Product', {
         }
     },
     showProductView: function(){
-        var productStore = Ext.getStore('Product');
-        var product = productStore.filter([{property:'barcode', value: '12345'}]);
-        productStore.load();
-        var productWin = Ext.create('HomeInventory.view.Product');
-        productWin.setData(product);
-        Ext.Viewport.add(productWin);
-		Ext.Viewport.setActiveItem(productWin);
+        var me = this;
+        var Product = Ext.ModelMgr.getModel('HomeInventory.model.Product').load('1234', {
+            success: function(product) {
+                console.log("Loaded product: " + product.get('barcode'));
+                var productWin = me.getProductView();
+                productWin.setValues(product.data);
+                Ext.Viewport.add(productWin);
+                Ext.Viewport.animateActiveItem(productWin, { type: 'slide', direction: 'left' });
+            }
+        });
 	},
     returnToMain: function(){
-        Ext.Viewport.remove(Ext.Viewport.getActiveItem(), false); 
-		Ext.Viewport.setActiveItem('main');
+        Ext.Viewport.remove(Ext.Viewport.getActiveItem(), false);
+        Ext.Viewport.animateActiveItem('main', { type: 'slide', direction: 'right' });
 	},
     submitProduct: function(){
-        var productStore = Ext.getStore('Product');
-        console.log(productStore);
     },
 	
     //called when the Application is launched, remove if not needed
