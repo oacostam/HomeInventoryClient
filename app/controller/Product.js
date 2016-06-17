@@ -33,7 +33,7 @@ Ext.define('HomeInventory.controller.Product', {
     },
     showProductView: function(){
         var me = this;
-        var Product = Ext.ModelMgr.getModel('HomeInventory.model.Product').load('1234', {
+        Ext.ModelMgr.getModel('HomeInventory.model.Product').load('1234', {
             success: function(product) {
                 console.log("Loaded product: " + product.get('barcode'));
                 var productWin = me.getProductView();
@@ -48,6 +48,31 @@ Ext.define('HomeInventory.controller.Product', {
         Ext.Viewport.animateActiveItem('main', { type: 'slide', direction: 'right' });
 	},
     submitProduct: function(){
+        Ext.Viewport.setMasked({
+            xtype: 'loadmask',
+            indicator: true,
+            message: 'Saving product...'
+        });
+        debugger;
+        var product = Ext.create('HomeInventory.model.Product');
+        this.getProductView().updateRecord(product);
+        var validation = product.validate();
+        if(validation.isValid){
+            var me = this;
+            product.save({
+                success: function(){
+                    Ext.Viewport.unmask();
+                    me.returnToMain();
+	        },
+            failure: function(){
+                Ext.Viewport.unmask();
+                Ext.Msg.alert('There was an error updating the product');
+                me.returnToMain();
+            }
+          });
+        }else{
+            //Show validation error
+        }
     },
 	
     //called when the Application is launched, remove if not needed

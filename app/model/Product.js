@@ -2,7 +2,7 @@ Ext.define('HomeInventory.model.Product', {
     extend: 'Ext.data.Model',
     
     config: {
-        idPropety: 'barcode',
+        idProperty: '_id',
         fields: [
             { name: '_id', type: 'auto' },
             { name: 'name', type: 'string' },

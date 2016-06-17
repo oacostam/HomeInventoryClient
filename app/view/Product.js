@@ -41,7 +41,7 @@ Ext.define('HomeInventory.view.Product', {
 						{
 							name: 'creationDate',
 							xtype: 'datepickerfield',
-							label: 'CreationDate'
+							label: 'Creation'
 						},
 						{
 							name: 'currentAmount',
