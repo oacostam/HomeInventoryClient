@@ -58,6 +58,7 @@ Ext.define('HomeInventory.controller.Product', {
         this.getProductView().updateRecord(product);
         var validation = product.validate();
         if(validation.isValid){
+            product.phantom = product.getId().startsWith('ext-record');
             var me = this;
             product.save({
                 success: function(){

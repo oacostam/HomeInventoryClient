@@ -668,7 +668,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "HomeInventory.view.Main": []
+  "HomeInventory.controller.Main": [],
+  "HomeInventory.controller.Product": [],
+  "HomeInventory.model.Product": [],
+  "HomeInventory.store.Product": [],
+  "HomeInventory.view.Main": [],
+  "HomeInventory.view.Product": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -1397,8 +1402,15 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "HomeInventory.controller.Main": [],
+  "HomeInventory.controller.Product": [],
+  "HomeInventory.model.Product": [],
+  "HomeInventory.store.Product": [],
   "HomeInventory.view.Main": [
     "widget.main"
+  ],
+  "HomeInventory.view.Product": [
+    "widget.productView"
   ]
 });
 
