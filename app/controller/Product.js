@@ -53,7 +53,6 @@ Ext.define('HomeInventory.controller.Product', {
             indicator: true,
             message: 'Saving product...'
         });
-        debugger;
         var product = Ext.create('HomeInventory.model.Product');
         this.getProductView().updateRecord(product);
         var validation = product.validate();
