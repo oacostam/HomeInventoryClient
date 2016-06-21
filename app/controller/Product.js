@@ -33,15 +33,24 @@ Ext.define('HomeInventory.controller.Product', {
     },
     showProductView: function(){
         var me = this;
-        Ext.ModelMgr.getModel('HomeInventory.model.Product').load('1234', {
-            success: function(product) {
-                console.log("Loaded product: " + product.get('barcode'));
-                var productWin = me.getProductView();
-                productWin.setValues(product.data);
-                Ext.Viewport.add(productWin);
-                Ext.Viewport.animateActiveItem(productWin, { type: 'slide', direction: 'left' });
+        cordova.plugins.barcodeScanner.scan(
+            function (result) {
+                if(!result.cancelled){
+                    Ext.ModelMgr.getModel('HomeInventory.model.Product').load(result.text, {
+                        success: function(product) {
+                            console.log("Loaded product: " + product.get('barcode'));
+                            var productWin = me.getProductView();
+                            productWin.setValues(product.data);
+                            Ext.Viewport.add(productWin);
+                            Ext.Viewport.animateActiveItem(productWin, { type: 'slide', direction: 'left' });
+                        }
+                    });
+                }
+            }, 
+            function (error) {
+                Ext.Msg.alert("Scanning failed: " + error);
             }
-        });
+        );
 	},
     returnToMain: function(){
         Ext.Viewport.remove(Ext.Viewport.getActiveItem(), false);

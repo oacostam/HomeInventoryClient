@@ -17,7 +17,7 @@ Ext.define('HomeInventory.model.Product', {
         ],
         proxy :{
             type: 'rest',
-            url: 'http://localhost:3000/products'
+            url: 'http://cayohuesosoft.ddns.net:3000/products'
         }
     }
 });
