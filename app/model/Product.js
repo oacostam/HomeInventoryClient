@@ -2,7 +2,7 @@ Ext.define('HomeInventory.model.Product', {
     extend: 'Ext.data.Model',
     
     config: {
-        idProperty: '_id',
+        idProperty: 'barcode',
         fields: [
             { name: '_id', type: 'auto' },
             { name: 'name', type: 'string' },
@@ -17,7 +17,8 @@ Ext.define('HomeInventory.model.Product', {
         ],
         proxy :{
             type: 'rest',
-            url: 'http://cayohuesosoft.ddns.net:3000/products'
+            url: 'http://localhost:3000/products'
+            //url: 'http://cayohuesosoft.ddns.net:3000/products'
         }
     }
 });

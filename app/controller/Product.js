@@ -31,13 +31,21 @@ Ext.define('HomeInventory.controller.Product', {
             }
         }
     },
+
+    fakeScan: function (callback) {
+        return callback({text : '8888', cancelled: false});
+    },
+
     showProductView: function(){
         var me = this;
-        cordova.plugins.barcodeScanner.scan(
+        //cordova.plugins.barcodeScanner.scan
+        this.fakeScan(
             function (result) {
+                debugger;
                 if(!result.cancelled){
                     Ext.ModelMgr.getModel('HomeInventory.model.Product').load(result.text, {
                         success: function(product) {
+                            debugger;
                             console.log("Loaded product: " + product.get('barcode'));
                             var productWin = me.getProductView();
                             productWin.setValues(product.data);
@@ -52,10 +60,12 @@ Ext.define('HomeInventory.controller.Product', {
             }
         );
 	},
+
     returnToMain: function(){
         Ext.Viewport.remove(Ext.Viewport.getActiveItem(), false);
         Ext.Viewport.animateActiveItem('main', { type: 'slide', direction: 'right' });
 	},
+
     submitProduct: function(){
         Ext.Viewport.setMasked({
             xtype: 'loadmask',
@@ -66,7 +76,8 @@ Ext.define('HomeInventory.controller.Product', {
         this.getProductView().updateRecord(product);
         var validation = product.validate();
         if(validation.isValid){
-            product.phantom = product.getId().startsWith('ext-record');
+            debugger;
+            product.phantom = product.get('_id') === '';
             var me = this;
             product.save({
                 success: function(){
